@@ -3,10 +3,11 @@ import { CartContext } from '../context/CartContext'
 
 const useCart = () => {
   const context = useContext(CartContext)
+  
   if (!context) {
     throw new Error('useCart must be used within a CartProvider')
   }
-  
+
   const { cartItems, totalQuantity, totalAmount, dispatch } = context
 
   const addToCart = (product) => {

@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import { createContext, useReducer } from 'react'
+import PropTypes from 'prop-types'
 
 export const FilterContext = createContext()
 
@@ -51,5 +51,9 @@ const FilterProvider = ({ children }) => {
     </FilterContext.Provider>
   )
 }
+
+FilterProvider.propTypes = {
+    children: PropTypes.node.isRequired
+  }
 
 export default FilterProvider

@@ -9,12 +9,12 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">
-            <Link to="/" className="text-2xl font-bold text-gray-900 hover:text-primary-600">
+            <Link to="/home" className="text-2xl font-bold text-gray-900 hover:text-primary-600">
               E-Store
             </Link>
           </div>
           <div className="flex items-center space-x-8">
-            <Link to="/" className="text-gray-600 hover:text-gray-900 font-medium">
+            <Link to="/home" className="text-gray-600 hover:text-gray-900 font-medium">
               Home
             </Link>
             <Link to="/cart" className="group flex items-center text-gray-600 hover:text-gray-900 font-medium">

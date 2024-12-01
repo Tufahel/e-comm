@@ -43,8 +43,7 @@ A modern e-commerce frontend application built with React, featuring a comprehen
 ### Installation
 
 1. Clone the repository
-```bash
-git clone [repository-url]
+- git clone [[repository-url](https://github.com/Tufahel/e-comm)]
 
 2. Install dependencies
 - npm install

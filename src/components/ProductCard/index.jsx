@@ -1,63 +1,70 @@
-import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import { Heart } from 'lucide-react'
 import { formatPrice } from '../../utils/formatPrice'
 import useCart from '../../hooks/useCart'
+import { useWishlist } from '../../context/WishlistContext'
 
 const ProductCard = ({ product }) => {
   const { addToCart } = useCart()
-  const { id, name, price, image, description, stock } = product
+  const { items, dispatch } = useWishlist()
+  const isInWishlist = items.some(item => item.id === product.id)
 
   const handleAddToCart = (e) => {
     e.preventDefault()
     addToCart(product)
   }
 
+  const toggleWishlist = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    dispatch({
+      type: isInWishlist ? 'REMOVE_FROM_WISHLIST' : 'ADD_TO_WISHLIST',
+      payload: product
+    })
+  }
+
   return (
-    <Link 
-      to={`/product/${id}`}
-      className="group relative bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden"
-    >
-      <div className="aspect-w-1 aspect-h-1">
-        <img 
-          src={image} 
-          alt={name}
-          className="w-full h-full object-cover object-center group-hover:opacity-75 transition-opacity"
+    <div className="relative bg-white rounded-lg shadow-sm overflow-hidden">
+      <button
+        onClick={toggleWishlist}
+        className="absolute top-2 right-2 p-2 rounded-full bg-white shadow-sm z-10 hover:bg-gray-100"
+      >
+        <Heart 
+          className={`h-5 w-5 ${
+            isInWishlist ? 'fill-red-500 text-red-500' : 'text-gray-400'
+          }`}
         />
-      </div>
-      <div className="p-4">
-        <h2 className="text-lg font-medium text-gray-900 mb-1">
-          {name}
-        </h2>
-        <p className="text-sm text-gray-500 mb-3 line-clamp-2">
-          {description}
-        </p>
-        <div className="flex items-center justify-between">
-          <span className="text-lg font-semibold text-gray-900">
-            {formatPrice(price)}
-          </span>
-          <button 
+      </button>
+      <Link to={`/product/${product.id}`}>
+        <img
+          src={product.image}
+          alt={product.name}
+          className="w-full h-48 object-cover hover:opacity-75 transition-opacity"
+        />
+        <div className="p-4">
+          <h3 className="text-lg font-medium text-gray-900">{product.name}</h3>
+          <p className="mt-1 text-gray-500">{formatPrice(product.price)}</p>
+          <button
             onClick={handleAddToCart}
-            disabled={stock === 0}
-            className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 disabled:bg-gray-400 disabled:cursor-not-allowed"
+            className="mt-4 w-full bg-primary-600 text-white px-4 py-2 rounded-md hover:bg-primary-700"
           >
-            {stock === 0 ? 'Out of Stock' : 'Add to Cart'}
+            Add to Cart
           </button>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   )
 }
 
 ProductCard.propTypes = {
-    product: PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-      price: PropTypes.number.isRequired,
-      description: PropTypes.string.isRequired,
-      image: PropTypes.string.isRequired,
-      stock: PropTypes.number.isRequired,
-      category: PropTypes.string.isRequired
-    }).isRequired
-  }
+  product: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    image: PropTypes.string.isRequired,
+    description: PropTypes.string
+  }).isRequired
+}
 
 export default ProductCard

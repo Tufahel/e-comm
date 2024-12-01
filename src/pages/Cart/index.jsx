@@ -1,8 +1,10 @@
-import useCart from '../../hooks/useCart'
-import { formatPrice } from '../../utils/formatPrice'
+import useCart from "../../hooks/useCart";
+import { formatPrice } from "../../utils/formatPrice";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
-  const { cartItems, totalAmount, removeFromCart, updateQuantity } = useCart()
+  const { cartItems, totalAmount, removeFromCart, updateQuantity } = useCart();
+  const navigate = useNavigate();
 
   if (cartItems.length === 0) {
     return (
@@ -16,7 +18,7 @@ const Cart = () => {
           </p>
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -30,17 +32,19 @@ const Cart = () => {
         <div className="lg:col-span-8">
           <div className="space-y-4">
             {cartItems.map((item) => (
-              <div 
+              <div
                 key={item.id}
                 className="flex items-center bg-white rounded-lg shadow-sm p-4 hover:shadow-md transition-shadow"
               >
-                <img 
+                <img
                   src={item.image}
                   alt={item.name}
                   className="w-20 h-20 object-cover rounded-md"
                 />
                 <div className="ml-4 flex-grow">
-                  <h3 className="text-lg font-medium text-gray-900">{item.name}</h3>
+                  <h3 className="text-lg font-medium text-gray-900">
+                    {item.name}
+                  </h3>
                   <p className="text-sm text-gray-500">{item.description}</p>
                   <div className="mt-1 flex items-center">
                     <span className="text-lg font-medium text-gray-900">
@@ -49,7 +53,9 @@ const Cart = () => {
                     <span className="mx-2 text-gray-500">×</span>
                     <select
                       value={item.quantity}
-                      onChange={(e) => updateQuantity(item.id, Number(e.target.value))}
+                      onChange={(e) =>
+                        updateQuantity(item.id, Number(e.target.value))
+                      }
                       className="rounded-md border-gray-300 py-1 text-base focus:outline-none focus:ring-2 focus:ring-primary-500"
                     >
                       {[...Array(10)].map((_, i) => (
@@ -83,7 +89,9 @@ const Cart = () => {
             <div className="mt-6 space-y-4">
               <div className="flex items-center justify-between">
                 <p className="text-sm text-gray-600">Subtotal</p>
-                <p className="text-lg font-medium text-gray-900">{formatPrice(totalAmount)}</p>
+                <p className="text-lg font-medium text-gray-900">
+                  {formatPrice(totalAmount)}
+                </p>
               </div>
               <div className="flex items-center justify-between">
                 <p className="text-sm text-gray-600">Shipping</p>
@@ -91,19 +99,26 @@ const Cart = () => {
               </div>
               <div className="border-t border-gray-200 pt-4">
                 <div className="flex items-center justify-between">
-                  <p className="text-base font-medium text-gray-900">Order total</p>
-                  <p className="text-xl font-medium text-gray-900">{formatPrice(totalAmount)}</p>
+                  <p className="text-base font-medium text-gray-900">
+                    Order total
+                  </p>
+                  <p className="text-xl font-medium text-gray-900">
+                    {formatPrice(totalAmount)}
+                  </p>
                 </div>
               </div>
             </div>
-            <button className="mt-6 w-full bg-primary-600 border border-transparent rounded-md shadow-sm py-3 px-4 text-base font-medium text-white hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+            <button
+              onClick={() => navigate("/checkout")}
+              className="mt-4 w-full bg-primary-600 text-white py-3 px-4 rounded-md hover:bg-primary-700"
+            >
               Proceed to Checkout
             </button>
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Cart
+export default Cart;

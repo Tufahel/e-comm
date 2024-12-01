@@ -3,6 +3,7 @@ import { useState} from 'react'
 import useCart from '../../hooks/useCart'
 import { formatPrice } from '../../utils/formatPrice'
 import productsData from '../../data/products.json'
+import Reviews from '../../components/Reviews'
 
 const ProductDetails = () => {
   const { id } = useParams()
@@ -105,6 +106,29 @@ const ProductDetails = () => {
           </div>
         </div>
       </div>
+      <Reviews 
+        productId={product.id}
+        initialReviews={[
+          {
+            id: 1,
+            userId: 1,
+            userName: "John Doe",
+            productId: product.id,
+            rating: 5,
+            comment: "Great product! Exactly what I was looking for.",
+            date: "2024-03-20T10:00:00Z"
+          },
+          {
+            id: 2,
+            userId: 2,
+            userName: "Jane Smith",
+            productId: product.id,
+            rating: 4,
+            comment: "Good quality, but shipping took longer than expected.",
+            date: "2024-03-19T15:30:00Z"
+          }
+        ]} 
+      />
     </div>
   )
 }

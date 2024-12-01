@@ -3,7 +3,6 @@ import { CartContext } from '../context/CartContext'
 
 const useCart = () => {
   const context = useContext(CartContext)
-  
   if (!context) {
     throw new Error('useCart must be used within a CartProvider')
   }
@@ -22,6 +21,10 @@ const useCart = () => {
     dispatch({ type: 'UPDATE_QUANTITY', payload: { id: productId, quantity } })
   }
 
+  const clearCart = () => {
+    dispatch({ type: 'CLEAR_CART' })
+  }
+
   return {
     cartItems,
     totalQuantity,
@@ -29,6 +32,7 @@ const useCart = () => {
     addToCart,
     removeFromCart,
     updateQuantity,
+    clearCart
   }
 }
 

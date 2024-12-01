@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useAuth } from '../../context/AuthContext'
 import { Link, useNavigate } from 'react-router-dom'
 
 const Register = () => {
@@ -10,6 +11,7 @@ const Register = () => {
     confirmPassword: ''
   })
   const [error, setError] = useState('')
+  const { login } = useAuth()
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -26,17 +28,16 @@ const Register = () => {
       setError('Please fill in all fields')
       return
     }
-
+  
     if (formData.password !== formData.confirmPassword) {
       setError('Passwords do not match')
       return
     }
-
-
-    localStorage.setItem('user', JSON.stringify({ 
+  
+    login({ 
       name: formData.name,
       email: formData.email 
-    }))
+    })
     navigate('/')
   }
 

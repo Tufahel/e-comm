@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useAuth } from '../../context/AuthContext'
 import { Link, useNavigate } from 'react-router-dom'
 
 const Login = () => {
@@ -8,6 +9,7 @@ const Login = () => {
     password: ''
   })
   const [error, setError] = useState('')
+  const { login } = useAuth()
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -16,12 +18,10 @@ const Login = () => {
       [name]: value
     }))
   }
-
   const handleSubmit = (e) => {
     e.preventDefault()
-    // Mock login - we'll update this with real authentication later
     if (formData.email && formData.password) {
-      localStorage.setItem('user', JSON.stringify({ email: formData.email }))
+      login({ email: formData.email })
       navigate('/')
     } else {
       setError('Please fill in all fields')

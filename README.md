@@ -52,8 +52,8 @@ A modern e-commerce frontend application built with React, featuring a comprehen
 - npm run dev
 
 ### Project Structure
-- src
-  ```
+```
+src
   ├── components/      # Reusable components
   ├── context/        # Context providers
   ├── hooks/          # Custom hooks

@@ -22,7 +22,7 @@ const Login = () => {
     e.preventDefault()
     if (formData.email && formData.password) {
       login({ email: formData.email })
-      navigate('/')
+      navigate('/home')
     } else {
       setError('Please fill in all fields')
     }

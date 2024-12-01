@@ -15,7 +15,7 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">
-            <Link to="/" className="text-xl font-bold">
+            <Link to="/home" className="text-xl font-bold">
               E-Store
             </Link>
           </div>
@@ -25,7 +25,7 @@ const Navigation = () => {
           </div>
 
           <div className="flex items-center space-x-4">
-            <Link to="/" className="px-3 py-2 hover:text-blue-600">
+            <Link to="/home" className="px-3 py-2 hover:text-blue-600">
               Home
             </Link>
             <Link
@@ -45,7 +45,7 @@ const Navigation = () => {
               </Link>
             ) : (
               <>
-                <Link to="/login" className="px-3 py-2 hover:text-blue-600">
+                <Link to="/" className="px-3 py-2 hover:text-blue-600">
                   Login
                 </Link>
                 <Link
@@ -69,6 +69,9 @@ const Navigation = () => {
                   {items.length}
                 </span>
               )}
+            </Link>
+            <Link to="/" className="px-3 py-2 border rounded-lg bg-blue-500 text-white font-medium">
+              Log out
             </Link>
           </div>
         </div>

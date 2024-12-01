@@ -1,8 +1,75 @@
-# React + Vite
+# E-commerce Frontend Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern e-commerce frontend application built with React, featuring a comprehensive shopping experience from product browsing to checkout.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Product Management
+- Product listing with advanced filtering
+- Detailed product views
+- Real-time search with autocomplete
+- Category-based filtering and sorting
+
+### User Features
+- User authentication (Login/Register)
+- Profile management
+- Order history
+- Order tracking
+
+### Shopping Experience
+- Shopping cart management
+- Wishlist functionality
+- Multi-step checkout process
+ - Cart review
+ - Shipping information
+ - Payment method selection
+ - Order confirmation
+- Order tracking system
+
+## Tech Stack
+
+- React
+- React Router for navigation
+- Context API for state management
+- Tailwind CSS for styling
+- Local Storage for data persistence
+
+## Getting Started
+
+### Prerequisites
+- Node.js (version 14 or higher)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository
+```bash
+git clone [repository-url]
+
+2. Install dependencies
+- npm install
+
+3. Start the development server
+- npm run dev
+
+### Project Structure
+- src/
+  ├── components/      # Reusable components
+  ├── context/        # Context providers
+  ├── hooks/          # Custom hooks
+  ├── pages/          # Page components
+  ├── utils/          # Utility functions
+  └── data/          # Mock data
+
+### Available Scripts
+- npm run dev - Starts development server
+- npm run build - Builds the app for production
+- npm run preview - Preview production build locally
+
+### License
+- This project is licensed under the MIT License - see the LICENSE.md file for details
+
+### Acknowledgments
+- Built using Vite
+- Styled with Tailwind CSS
+- Icons from Lucide React

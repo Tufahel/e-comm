@@ -28,7 +28,7 @@ const Checkout = () => {
             Add some items to your cart to checkout
           </p>
           <button
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/home")}
             className="mt-4 bg-primary-600 text-white px-6 py-2 rounded-md hover:bg-primary-700"
           >
             Continue Shopping

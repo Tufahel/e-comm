@@ -97,7 +97,7 @@ const Reviews = ({ productId, initialReviews = [] }) => {
         </form>
       ) : (
         <p className="text-gray-600 mb-8">
-          Please <a href="/login" className="text-primary-600 hover:text-primary-500">login</a> to leave a review.
+          Please <a href="/" className="text-primary-600 hover:text-primary-500">login</a> to leave a review.
         </p>
       )}
 

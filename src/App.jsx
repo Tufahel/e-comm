@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import CartProvider from "./context/CartContext";
 import FilterProvider from "./context/FilterContext";
 import Navigation from "./components/Navigation";
@@ -18,6 +18,9 @@ import OrderSuccess from "./pages/OrderSuccess";
 import OrderTracking from "./pages/OrderTracking";
 
 const App = () => {
+  const location = useLocation()
+  const isAuthPage = location.pathname === '/' || location.pathname === '/register'
+
   return (
     <AuthProvider>
       <WishlistProvider>
@@ -25,12 +28,12 @@ const App = () => {
           <FilterProvider>
             <div className="min-h-screen bg-gray-50">
               <Toaster position="top-right" />
-              <Navigation />
+              {!isAuthPage && <Navigation />}
               <main className="max-w-7xl mx-auto px-4 py-8">
                 <Routes>
-                  <Route path="/login" element={<Login />} />
+                  <Route path="/" element={<Login />} />
                   <Route path="/register" element={<Register />} />
-                  <Route path="/" element={<Home />} />
+                  <Route path="/home" element={<Home />} />
                   <Route path="/product/:id" element={<ProductDetails />} />
                   <Route path="/cart" element={<Cart />} />
                   <Route path="/wishlist" element={<Wishlist />} />

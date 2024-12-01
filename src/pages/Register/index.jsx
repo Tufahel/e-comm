@@ -50,7 +50,7 @@ const Register = () => {
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
             Or{' '}
-            <Link to="/login" className="font-medium text-primary-600 hover:text-primary-500">
+            <Link to="/" className="font-medium text-primary-600 hover:text-primary-500">
               sign in to existing account
             </Link>
           </p>

@@ -11,12 +11,12 @@ const OrderSuccess = () => {
     clearCart()
     const orderDetails = localStorage.getItem('lastOrder')
     if (!orderDetails) {
-      navigate('/')
+      navigate('/home')
     }
   }, [navigate, clearCart])
 
   const handleContinueShopping = () => {
-    window.location.href = '/'  // This will cause a full page reload
+    window.location.href = '/home'  // This will cause a full page reload
   }
 
   return (

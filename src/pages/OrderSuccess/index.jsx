@@ -16,7 +16,8 @@ const OrderSuccess = () => {
   }, [navigate, clearCart])
 
   const handleContinueShopping = () => {
-    window.location.href = '/home'  // This will cause a full page reload
+    navigate('/home')
+    window.location.reload()
   }
 
   return (
